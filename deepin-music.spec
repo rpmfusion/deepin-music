@@ -1,6 +1,6 @@
 Name:           deepin-music
 Version:        3.1.11
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -89,6 +89,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 3.1.11-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Wed Dec 05 2018 Zamir SUN <sztsian@gmail.com> - 3.1.11-1
 - Update to 3.1.11
 
