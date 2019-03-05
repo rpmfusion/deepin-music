@@ -61,6 +61,7 @@ sed -i 's|$$PWD/../vendor/dbusextended-qt/src|%{_qt5_includedir}/DBusExtended|g'
 rm src/vendor -rf
 
 %build
+export PATH=%{_qt5_bindir}:$PATH
 %qmake_qt5 PREFIX=%{_prefix}
 %make_build
 
