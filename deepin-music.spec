@@ -1,6 +1,6 @@
 Name:           deepin-music
-Version:        3.1.11
-Release:        2%{?dist}
+Version:        3.1.15
+Release:        1%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -51,7 +51,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Header files and libraries for %{name}.
 
 %prep
-%setup -q
+%autosetup
 sed -i '/vendor/d' src/src.pro
 sed -i '/%1/s|lib|%{_lib}|' src/music-player/core/pluginmanager.cpp
 sed -i '/target.path/s|lib|%{_lib}|' src/libdmusic/libdmusic.pro \
@@ -66,8 +66,10 @@ rm src/vendor -rf
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
-desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 install -pDm644 %{S:1} %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
 
 %files
@@ -75,10 +77,8 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %license LICENSE
 %{_bindir}/%{name}
 %{_libdir}/lib*.so.*
-%{_libdir}/%{name}/
-%{_libdir}/%{name}/plugins/
-%{_libdir}/%{name}/plugins/lib*.so.*
-%{_datadir}/%{name}/
+%{_libdir}/%{name}
+%{_datadir}/%{name}
 %{_datadir}/dman/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -89,6 +89,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Tue Mar  5 2019 Vasiliy Glazov <vascom2@gmail.com> - 3.1.15-1
+- Update to 3.1.15
+
 * Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 3.1.11-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
