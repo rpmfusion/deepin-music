@@ -1,6 +1,6 @@
 Name:           deepin-music
 Version:        3.1.15
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -90,6 +90,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Wed Aug 07 2019 Leigh Scott <leigh123linux@gmail.com> - 3.1.15-2
+- Rebuild for new ffmpeg version
+
 * Tue Mar  5 2019 Vasiliy Glazov <vascom2@gmail.com> - 3.1.15-1
 - Update to 3.1.15
 
