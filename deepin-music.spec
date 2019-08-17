@@ -1,6 +1,6 @@
 Name:           deepin-music
-Version:        3.1.15
-Release:        2%{?dist}
+Version:        5.0.1
+Release:        1%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -43,13 +43,6 @@ you will found.
 深度音乐播放器界面基于 Deepin-UI , 后端使用 gstreamer ,
 其他特性如音乐搜索, 丰富多彩的歌词支持, 更多功能等待您发现.
 
-%package devel
-Summary:        Development package for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description devel
-Header files and libraries for %{name}.
-
 %prep
 %autosetup
 sed -i '/vendor/d' src/src.pro
@@ -77,19 +70,19 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+%{_libdir}/lib*.so
 %{_libdir}/lib*.so.*
-%{_libdir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/dman/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_metainfodir}/%{name}.appdata.xml
 
-%files devel
-%{_libdir}/lib*.so
-%{_libdir}/%{name}/plugins/lib*.so
 
 %changelog
+* Sat Aug 17 2019 Zamir SUN <sztsian@gmail.com> 5.0.1-1
+- Update to 5.0.1
+
 * Wed Aug 07 2019 Leigh Scott <leigh123linux@gmail.com> - 3.1.15-2
 - Rebuild for new ffmpeg version
 
