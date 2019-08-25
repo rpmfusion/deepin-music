@@ -1,6 +1,6 @@
 Name:           deepin-music
 Version:        5.0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -61,6 +61,7 @@ export PATH=%{_qt5_bindir}:$PATH
 %install
 %make_install INSTALL_ROOT=%{buildroot}
 install -pDm644 %{S:1} %{buildroot}/%{_metainfodir}/%{name}.appdata.xml
+rm %{buildroot}/%{_datadir}/translations -rf
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -73,6 +74,7 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 %{_libdir}/lib*.so
 %{_libdir}/lib*.so.*
 %{_datadir}/%{name}
+%{_datadir}/%{name}/*
 %{_datadir}/dman/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
@@ -80,6 +82,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 
 
 %changelog
+* Sun Aug 25 2019 Zamir SUN <sztsian@gmail.com> 5.0.1-2
+- Remove duplicated translation files in /usr/share/translations/
+
 * Sat Aug 17 2019 Zamir SUN <sztsian@gmail.com> 5.0.1-1
 - Update to 5.0.1
 
