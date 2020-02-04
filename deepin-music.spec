@@ -1,6 +1,6 @@
 Name:           deepin-music
 Version:        5.0.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Deepin Music Player
 Summary(zh_CN): 深度音乐播放器
 License:        GPLv3
@@ -82,6 +82,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/%{name}.appda
 
 
 %changelog
+* Tue Feb 04 2020 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 5.0.1-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Sun Aug 25 2019 Zamir SUN <sztsian@gmail.com> 5.0.1-2
 - Remove duplicated translation files in /usr/share/translations/
 
